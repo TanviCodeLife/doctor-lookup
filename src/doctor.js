@@ -1,4 +1,10 @@
 export class Doctor {
+  constructor(firstName, lastName) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.details = [];
+  }
+
   static getByCondition(condition) {
     return new Promise(function(resolve, reject) {
       let request = new XMLHttpRequest();
@@ -30,4 +36,32 @@ export class Doctor {
       request.send();
     });
   }
-}
+
+  static getDoctorsList(response) {
+    const parsedResponse = JSON.parse(response);
+    const doctorList = [];
+    parsedResponse.data.forEach((record) => {
+      if (record.profile !== undefined) {
+        let doctor = new Doctor(record.profile.first_name, record.profile.last_name);
+        Doctor.addDetails(doctor, record.practices);
+        doctorList.push(doctor);
+      }
+    });
+  }
+
+
+    static addDetails(doctor, detailList) {
+      detailList.forEach((detail) => {
+        let newDetail = new Details(
+          detail.uid,
+          detail.name,
+          detail.visit_address,
+          detail.phones[0].number,
+          detail.website,
+          detail.accepts_new_patients
+        );
+        Detail.checkNewPatients(newDetail);
+        doctor.details.push(newDetail);
+      });
+    }
+  }

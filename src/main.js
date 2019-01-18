@@ -14,15 +14,17 @@ function resultsByCondition(condition) {
   });
 }
 
-function resultsByDoctorName(name) {
+static resultsByDoctorName(name) {
   let namePromise = Doctor.getByName(name);
   namePromise.then((response) => {
-    const parsedResponse = JSON.parse(response);
-    console.log("parsedResponse ", parsedResponse);
-  }, (error) => {
-    console.log(error)
-  });
-}
+    const doctorList = Doctor.getDoctorList(response);
+    doctorList.forEach(function(doctor){
+      $("#doctor-list").append(`<li>${doctor.firstName} ${doctor.lastName}</li>`);
+    });
+    }, (error) => {
+      console.log(error)
+    });
+  }
 
 $(document).ready(function() {
   $('#condition-form').submit(function(event) {
