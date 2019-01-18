@@ -14,11 +14,27 @@ function resultsByCondition(condition) {
   });
 }
 
+function resultsByDoctorName(name) {
+  let namePromise = Doctor.getByName(name);
+  namePromise.then((response) => {
+    const parsedResponse = JSON.parse(response);
+    console.log("parsedResponse ", parsedResponse);
+  }, (error) => {
+    console.log(error)
+  });
+}
+
 $(document).ready(function() {
-  $('#submitCondition').click(function(event) {
+  $('#condition-form').submit(function(event) {
     event.preventDefault();
     let condition = $('#condition').val();
     resultsByCondition(condition);
+  });
+
+  $('#docName-form').submit(function(event) {
+    event.preventDefault();
+    let docName = $('#doctor-name').val();
+    resultsByDoctorName(docName);
   });
 
 });
