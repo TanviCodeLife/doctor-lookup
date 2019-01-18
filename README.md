@@ -60,8 +60,9 @@ A JavaScript application that allows a user to view doctors in the Portland area
   | babel-present-es2015 v. 6.24.1       | Specifies how Babel can convert ES6 to ES5                                 |
   | clean-webpack-plugin v. 1.0.0       | Clean your build folder(s) before building                                 |
   | css-loader v. 2.1.0               | Interprets `@import` and `url()` like `import/require()` and resolves them |
-  | eslint v. 4.18.2                     | Identifies and reports on patterns found in Javscript code                 |
-  | eslint-loader v. 2.0.0               | ESLint loader for webpack                                                  |
+   | dotenv-webpack v. 1.6.0               | imports information like API keys from .env to src/anyfile.js   |
+  | eslint v. 5.12.0                     | Identifies and reports on patterns found in Javscript code                 |
+  | eslint-loader v. 2.1.1               | ESLint loader for webpack                                                  |
   | html-webpack-plugin v. 3.2.0         | Simplifies creation of HTML files to serve webpack bundles                 |
   | jasmine v. 3.1.0                     | Allows Jasmine specs to be run                                             |
   | jasmine-core v. 2.99.0               | JavaScript BDD testing framework                                           |
@@ -72,8 +73,8 @@ A JavaScript application that allows a user to view doctors in the Portland area
   | karma-jasmine-html-reporter v. 0.2.2 | Dynamically shows test results at debug.html page                          |
   | karma-jquery v. 0.2.2                | Plugin - adapter for jQuery framework                                      |
   | karma-webpack v. 2.0.13              | Use webpack to preprocess files in Karma                                   |
-  | style-loader v. 0.20.2               | adds CSS to the DOM by injecting a `<style>` tag                           |
-  | uglifyjs-webpack-plugin v. 1.2.2     | Minifies JavaScript                                                        |
+  | style-loader v. 0.23.1               | adds CSS to the DOM by injecting a `<style>` tag                           |
+  | uglifyjs-webpack-plugin v. 2.1.1     | Minifies JavaScript                                                        |
   | webpack v. 4.28.3                     | A module bundler used to bundle JavaScript files and additional resources   *Note - Remove carrot sign ^ in version number if webpack issues occur* |
   | webpack-cli v. 3.2.0                 | Use webpack from command line                                              |
   | webpack-dev-server v. 3.1.14          | Provides live reloading during development                                 |
