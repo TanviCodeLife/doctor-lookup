@@ -1,10 +1,10 @@
-# **Sample Readme**
-####  Week1 JavaScript Independent Project at Epicodus, 01/12/2019
+# **Doctor Lookup**
+####  Week2 JavaScript Independent Project at Epicodus, 01/18/2019
 #### Tanvi Garg   
 
   ---
 ## Description
-An application that determines a user’s age, lifespan and years left to live based on a planet’s solar years.
+A JavaScript application that allows a user to view doctors in the Portland area that meet the user's search criteria by utilizing the BetterDoctor API.
 
   ---
 ## Table of Contents
@@ -19,24 +19,18 @@ An application that determines a user’s age, lifespan and years left to live b
 
 | Behavior | Input | Output |
 |----------|-------|--------|
-|  Program takes a user's date of birth and calculate Earth years.| User DOB= 1985-3-5, Planet: Mercury, Country Of Residence: United States, Activity Level: Medium, Gender: F | 33.86 Earth years |
-|  Program takes a user's date of birth and converts to Mercury Years.| User DOB= 1985-3-5, Planet: Mercury, Country Of Residence: United States, Activity Level: Medium, Gender: F | 33.86 / .24 = 141.08 Mercury Yrs |
-| Program takes a user's date of birth and converts to Venus Years. | User DOB= 1985-3-5, Planet: Venus, Country Of Residence: United States, Activity Level: Medium, Gender: F | 33.86 / .62 = = 54.61 Venus Yrs |
-| Program takes a user's date of birth and converts to Mars Years. |  User DOB= 1985-3-5, Planet: Mars, Country Of Residence: United States, Activity Level: Medium, Gender: F  | 33.86 / 1.88 = 18.01 Mars Yrs |
-| Program takes a user's date of birth and converts to Jupiter Years. |  User DOB= 1985-3-5, Planet: Jupiter, Country Of Residence: United States, Activity Level: Medium, Gender: F  | 33.86 / 11.86 = 2.85 Jupiter Years |
-| Program takes a user's date of birth and gives life expectancy in Earth years based on country, gender and activity level. |  User DOB= 1985-3-5, Country Of Residence: United States, Activity Level: Medium, Gender: F  | Life Expectancy = 69 |
-| Program takes a user's date of birth and gives life expectancy in selected planet's years. |  User DOB= 1985-3-5, Planet: Mercury, Country Of Residence: United States, Activity Level: Medium, Gender: F  | Life Expectancy = 288 Mercury Years |
-| Program takes a user's date of birth and gives life expectancy in selected planet's years. |  User DOB= 1985-3-5, Planet: Venus, Country Of Residence: United States, Activity Level: Medium, Gender: F  | Life Expectancy = 111 Venus Years |
-| Program takes a user's date of birth and gives life expectancy in selected planet's years. |  User DOB= 1985-3-5, Planet: Mars, Country Of Residence: United States, Activity Level: Medium, Gender: F  | Life Expectancy = 37 Mars Years |
-| Program takes a user's date of birth and gives life expectancy in selected planet's years. |  User DOB= 1985-3-5, Planet: Jupiter, Country Of Residence: United States, Activity Level: Medium, Gender: F  | Life Expectancy = 6 Jupiter Years |
-| Program takes a user's date of birth and calculates how many years a user has left to live selected planet based on life expectancy. |  User DOB= 1985-3-5, Planet: Mercury, Country Of Residence: United States, Activity Level: Medium, Gender: F| 146.92  Mercury Years Left to Live |
-| Program takes a user's date of birth and calculates how many years a user has lived longer on a selected planet based on life expectancy. |  User DOB: 1930-1-1, Planet: Mercury, Country Of Residence: United States, Activity Level: High, Gender: F| 42 Mercury Years Over Life Expectancy |
+|  Program takes a user's medical issue and recieve a list of doctors in Portland, OR area | User Input: Flu | List of Doctors that treat the User Input Medical Issue |
+|   Program takes a user's input for a doctor name to receive a list of doctors in the Portland area that fit the search query| User Input: "SomeName" | A valid List Of Doctors is returned with information included about each doctor: first name, last name, address, phone number, website and whether or not the doctor is accepting new patients  |
+| Program takes a user's input for a doctor name and if query response doesn't include any doctors, then user should recieve a notification  hat states that no doctors meet the criteria.| User Input: "SomeName"  | "No Doctors available with SomeName in Portland, OR area" |
+| Program's API call for a user query results in an error (any message not a 200 OK), the application should return a notification to user that states what the error is.|  User Query: Doctor Name | "There was an error processing your request"|
+| Program's API call for a user query results in an error (any message not a 200 OK), the application should return a notification to user that states what the error is.|  User Query: "Flu" | "There was an error processing your request"|
+
  ---
 ## Setup on OSX <a name="setup"></a>
 
 * Install Node.js
 * Install karma-cli globally: `npm install -g karma-cli`
-* Go to GitHub profile and clone the repo from [Super Galactic Age Calculator](https://github.com/TanviCodeLife/galactic-age-calculator-JS.git). Use `git clone <project url>` command to pull it to a local repository in your Home directory.
+* Go to GitHub profile and clone the repo from [Doctor Lookup](https://github.com/TanviCodeLife/doctor-lookup.git). Use `git clone <project url>` command to pull it to a local repository in your Home directory.
 *  Navigate to root of project directory
 * `npm install` to install dependencies
 * `npm run start` to build and start the dev server
@@ -64,13 +58,13 @@ An application that determines a user’s age, lifespan and years left to live b
   | babel-core v. 6.26.0                 | Babel compiler core                                                        |
   | babel-loaded v. 7.1.3                | Babel loader for webpack                                                   |
   | babel-present-es2015 v. 6.24.1       | Specifies how Babel can convert ES6 to ES5                                 |
-  | clean-webpack-plugin v. 0.1.18       | Clean your build folder(s) before building                                 |
-  | css-loader v. 0.28.10                | Interprets `@import` and `url()` like `import/require()` and resolves them |
+  | clean-webpack-plugin v. 1.0.0       | Clean your build folder(s) before building                                 |
+  | css-loader v. 2.1.0               | Interprets `@import` and `url()` like `import/require()` and resolves them |
   | eslint v. 4.18.2                     | Identifies and reports on patterns found in Javscript code                 |
   | eslint-loader v. 2.0.0               | ESLint loader for webpack                                                  |
-  | html-webpack-plugin v. 3.0.6         | Simplifies creation of HTML files to serve webpack bundles                 |
+  | html-webpack-plugin v. 3.2.0         | Simplifies creation of HTML files to serve webpack bundles                 |
   | jasmine v. 3.1.0                     | Allows Jasmine specs to be run                                             |
-  | jasmine-core v. 2.99.1               | JavaScript BDD testing framework                                           |
+  | jasmine-core v. 2.99.0               | JavaScript BDD testing framework                                           |
   | karma v. 2.0.0                       | Allows the execution of JavaScript code in multiple *real* browsers        |
   | karma-chrome-launcher v. 2.2.0       | Launcher for Google Chrome, Google Chrome Canary, and Google Chromium      |
   | karma-cli v. 1.0.1                   | Use Karma from the command line                                            |
@@ -80,10 +74,10 @@ An application that determines a user’s age, lifespan and years left to live b
   | karma-webpack v. 2.0.13              | Use webpack to preprocess files in Karma                                   |
   | style-loader v. 0.20.2               | adds CSS to the DOM by injecting a `<style>` tag                           |
   | uglifyjs-webpack-plugin v. 1.2.2     | Minifies JavaScript                                                        |
-  | webpack v. 4.19.1                     | A module bundler used to bundle JavaScript files and additional resources   *Note - Remove carrot sign ^ in version number if webpack issues occur* |
-  | webpack-cli v. 2.0.9                 | Use webpack from command line                                              |
-  | webpack-dev-server v. 3.1.0          | Provides live reloading during development                                 |
-  | css-loader 0.28.10 and style-loader 0.20.2        | renders images in DOM when `<img>` tag is used  |
+  | webpack v. 4.28.3                     | A module bundler used to bundle JavaScript files and additional resources   *Note - Remove carrot sign ^ in version number if webpack issues occur* |
+  | webpack-cli v. 3.2.0                 | Use webpack from command line                                              |
+  | webpack-dev-server v. 3.1.14          | Provides live reloading during development                                 |
+  | css-loader 2.1.0 and style-loader 0.23.1        | renders images in DOM when `<img>` tag is used  |
 
 
 ---
