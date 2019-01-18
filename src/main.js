@@ -14,36 +14,37 @@ function resultsByCondition(condition) {
   });
 }
 
-static resultsByDoctorName(name) {
+function resultsByDoctorName(name) {
   let namePromise = Doctor.getByName(name);
   namePromise.then((response) => {
-    const doctorList = Doctor.getDoctorList(response);
+    const doctorList = Doctor.getDoctorsList(response);
+    console.log(doctorList);
     showResultsUi();
     displayResults(doctorList);
-  });
 }, (error) => {
   showResultsUi();
   displayError(error.message);
 });
 }
 
-function displayResults(doctors) {
-  if (doctors.length === 0){
+function displayResults(doctorsList) {
+  if (doctorsList.length === 0){
     const doctorCard = `<div class='doctor-card'>
     <p><i class="fas fa-exclamation-triangle"></i> No results match your search criteria. Please try again.</p>
     </div>`;
     $('#results').append(doctorCard);
   } else {
-    doctors.forEach((doctor, index) => {
+    doctorsList.forEach((doctor, index) => {
       const doctorCard = `<div class='doctor-card'>
       <h2>${doctor.firstName} ${doctor.lastName}</h2>
+      <p>${doctor.bio}</p>
       <ul id='${index}'>
       </ul>
       </div>`;
       $('#results').append(doctorCard);
 
       doctor.details.forEach((detail) => {
-        let phoneNumber = formatNumber(detail.phone);
+        let phoneNumber = parseNumber(detail.phone);
         let listItem = `<li class='detail-list-item'>
         <h5>${detail.name}</h5>
         ${detail.newPatients}<br/>
@@ -62,11 +63,20 @@ function showResultsUi() {
   $('#results').show();
 }
 
+function parseNumber(phone) {
+  const numbers = phone.split('');
+  numbers.splice(3,0,'-');
+  numbers.splice(7,0,'-');
+  const newPhone = numbers.join('');
+  return newPhone;
+}
+
+
 function displayError(message) {
   const doctorCard = `<div class='doctor-card'>
   <p><i class="fas fa-exclamation-triangle"></i> There was an error processing your request: ${message}.</p>
   </div>`;
-  $('.results-box').append(doctorCard);
+  $('#results').append(doctorCard);
 }
 
 $(document).ready(function() {

@@ -1,7 +1,10 @@
+import { Detail } from './doctor-details';
+
 export class Doctor {
-  constructor(firstName, lastName) {
+  constructor(firstName, lastName, bio) {
     this.firstName = firstName;
     this.lastName = lastName;
+    this.bio = bio;
     this.details = [];
   }
 
@@ -41,24 +44,28 @@ export class Doctor {
     const parsedResponse = JSON.parse(response);
     const doctorList = [];
     parsedResponse.data.forEach((record) => {
+      console.log("record", record);
       if (record.profile !== undefined) {
-        let doctor = new Doctor(record.profile.first_name, record.profile.last_name);
+        let doctor = new Doctor(record.profile.first_name, record.profile.last_name, record.profile.bio);
         Doctor.addDetails(doctor, record.practices);
         doctorList.push(doctor);
       }
     });
+    return doctorList;
   }
 
 
     static addDetails(doctor, detailList) {
       detailList.forEach((detail) => {
-        let newDetail = new Details(
+        let newDetail = new Detail(
           detail.uid,
           detail.name,
           detail.visit_address,
           detail.phones[0].number,
           detail.website,
-          detail.accepts_new_patients
+          detail.accepts_new_patients,
+          detail.lat,
+          detail.long,
         );
         Detail.checkNewPatients(newDetail);
         doctor.details.push(newDetail);
