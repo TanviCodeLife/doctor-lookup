@@ -79,18 +79,46 @@ function checkAndDisplayResults(doctorsList) {
     });
   }
 
+  function displayError(message) {
+    const doctorCard = `<div class='doctor-card'>
+    <p><i class="fas fa-exclamation-triangle"></i> There was an error processing your request: ${message}.</p>
+    </div>`;
+    $('#results').append(doctorCard);
+  }
+
+
 function showResultsUi() {
   $('#results').show();
 }
 
-function displayError(message) {
-  const doctorCard = `<div class='doctor-card'>
-  <p><i class="fas fa-exclamation-triangle"></i> There was an error processing your request: ${message}.</p>
-  </div>`;
-  $('#results').append(doctorCard);
+function showByDoctorForm() {
+  $('.search-container').hide();
+  $('#docName-form').show();
 }
 
+function showByConditionForm() {
+  $('.search-container').hide();
+  $('#condition-form').show();
+}
+
+function showHomeUi() {
+  $('#docName-form').hide();
+  $('#condition-form').hide();
+  $('.search-container').show();
+}
+
+
 $(document).ready(function() {
+
+  $('#search-by-docName').click(function() {
+    showByDoctorForm();
+  });
+
+  $('#search-by-condition').click(function() {
+    showByConditionForm();
+  });
+
+
   $('#condition-form').submit(function(event) {
     event.preventDefault();
     let condition = $('#condition').val();
