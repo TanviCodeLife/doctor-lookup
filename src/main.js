@@ -9,7 +9,7 @@ function resultsByCondition(condition) {
   conditionPromise.then((response) => {
     const doctorList = Doctor.getDoctorsList(response);
     showResultsUi();
-    displayResults(doctorList);
+    checkAndDisplayResults(doctorList);
   }, (error) => {
     showResultsUi();
     displayError(error.message);
@@ -22,7 +22,7 @@ function resultsByDoctorName(name) {
     const doctorList = Doctor.getDoctorsList(response);
     console.log(doctorList);
     showResultsUi();
-    displayResults(doctorList);
+    checkAndDisplayResults(doctorList);
 }, (error) => {
   showResultsUi();
   displayError(error.message);
@@ -47,8 +47,8 @@ function displayNoResults(){
 
 function displayDoctor(doctor, index){
   const doctorCard = `<div class='doctor-card'>
-  <h2>${doctor.firstName} ${doctor.lastName}</h2>
-  <p>${doctor.bio}</p>
+  <h2>${index + 1}.Doctor Name: ${doctor.firstName} ${doctor.lastName}</h2>
+  <p>Bio: ${doctor.bio}</p>
   <ul id='${index}'>
   </ul>
   </div>`;
@@ -59,10 +59,10 @@ function displayPracticeDetails(doctor, index){
   doctor.details.forEach((detail) => {
     let phoneNumber = parseNumber(detail.phone);
     let listItem = `<li class='detail-list-item'>
-    <h5>${detail.name}</h5>
-    ${detail.newPatients}<br/>
-    <a href='tel:${phoneNumber}'>${phoneNumber}</a><br/>
-    ${detail.address.street}<br/>
+    <h5>Name: ${detail.name}</h5>
+    Accepting New Patients: ${detail.newPatients}<br/>
+    Phone: ${phoneNumber}<br/>
+    Address: ${detail.address.street}<br/>
     ${detail.address.city}, ${detail.address.state} ${detail.address.zip}<br/>
     </li>`;
     $(`#${index}`).append(listItem);
@@ -75,10 +75,9 @@ function checkAndDisplayResults(doctorsList) {
     return displayNoResults();
   doctorsList.forEach((doctor, index) => {
     displayDoctor(doctor, index);
-    displayDetails(doctor, index);
+    displayPracticeDetails(doctor, index);
     });
   }
-}
 
 function showResultsUi() {
   $('#results').show();

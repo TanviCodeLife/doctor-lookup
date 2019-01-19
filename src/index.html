@@ -5,9 +5,15 @@
 </head>
 <body>
   <div class="container">
+    <div class="search-container">
+        <h1>Lookup Doctors</h1>
+        <p>Choose method to search for doctors</p>
+        <button class="btn btn-lg btn-info" id="search-by-condition">By Condition</button>
+        <button class="btn btn-lg btn-info" id="search-by-docName">By Doctor Name</button>
+      </div>
     <form id="condition-form">
       <div class="form-group">
-        <label for="condition" class="textColor">Name</label>
+        <label for="condition" class="textColor">Search By Condition</label>
         <input id="condition" class="form-control" type="text">
       </div>
       <div id="condition-button">
@@ -16,7 +22,7 @@
     </form>
     <form id="docName-form">
       <div class="form-group">
-        <label for="doctor-name" class="textColor">Name</label>
+        <label for="doctor-name" class="textColor">Search By Name</label>
         <input id="doctor-name" class="form-control" type="text">
       </div>
       <div id="docName-button">

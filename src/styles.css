@@ -1,3 +1,7 @@
 body {
   background-color: #fff;
 }
+
+#condition-form, #docName-form{
+  display: none;
+}
