@@ -7,10 +7,12 @@ import './styles.css';
 function resultsByCondition(condition) {
   let conditionPromise = Doctor.getByCondition(condition);
   conditionPromise.then((response) => {
-    const parsedResponse = JSON.parse(response);
-    console.log("parsedResponse ", parsedResponse);
+    const doctorList = Doctor.getDoctorsList(response);
+    showResultsUi();
+    displayResults(doctorList);
   }, (error) => {
-    console.log(error)
+    showResultsUi();
+    displayError(error.message);
   });
 }
 
@@ -26,6 +28,16 @@ function resultsByDoctorName(name) {
   displayError(error.message);
 });
 }
+
+
+function parseNumber(phone) {
+  const numbers = phone.split('');
+  numbers.splice(3,0,'-');
+  numbers.splice(7,0,'-');
+  const newPhone = numbers.join('');
+  return newPhone;
+}
+
 
 function displayResults(doctorsList) {
   if (doctorsList.length === 0){
@@ -59,18 +71,10 @@ function displayResults(doctorsList) {
   }
 }
 
+
 function showResultsUi() {
   $('#results').show();
 }
-
-function parseNumber(phone) {
-  const numbers = phone.split('');
-  numbers.splice(3,0,'-');
-  numbers.splice(7,0,'-');
-  const newPhone = numbers.join('');
-  return newPhone;
-}
-
 
 function displayError(message) {
   const doctorCard = `<div class='doctor-card'>
