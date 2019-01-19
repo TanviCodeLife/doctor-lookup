@@ -38,12 +38,11 @@ function parseNumber(phone) {
   return newPhone;
 }
 
-function displayNoResults(doctorsList){
-  if (doctorsList.length === 0)
-   return const doctorCard = `<div class='doctor-card'>
-    <p><i class="fas fa-exclamation-triangle"></i> No results match your search criteria. Please try again.</p>
-    </div>`;
-    $('#results').append(doctorCard);
+function displayNoResults(){
+  const doctorCard = `<div class='doctor-card'>
+  <p><i class="fas fa-exclamation-triangle"></i> No results match your search criteria. Please try again.</p>
+  </div>`;
+  $('#results').append(doctorCard);
 }
 
 function displayDoctor(doctor, index){
@@ -54,7 +53,6 @@ function displayDoctor(doctor, index){
   </ul>
   </div>`;
   $('#results').append(doctorCard);
-
 }
 
 function displayPracticeDetails(doctor, index){
@@ -73,7 +71,8 @@ function displayPracticeDetails(doctor, index){
 
 
 function checkAndDisplayResults(doctorsList) {
-  displayNoResults(doctorsList);
+  if (doctorsList.length === 0)
+    return displayNoResults();
   doctorsList.forEach((doctor, index) => {
     displayDoctor(doctor, index);
     displayDetails(doctor, index);
