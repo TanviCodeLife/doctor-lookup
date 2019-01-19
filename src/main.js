@@ -101,9 +101,10 @@ function showByConditionForm() {
   $('#condition-form').show();
 }
 
-function showHomeUi() {
+function showHome() {
   $('#docName-form').hide();
   $('#condition-form').hide();
+  $('#results').hide();
   $('.search-container').show();
 }
 
@@ -125,10 +126,18 @@ $(document).ready(function() {
     resultsByCondition(condition);
   });
 
+  $('#home').click(function() {
+    showHome();
+  });
+
   $('#docName-form').submit(function(event) {
     event.preventDefault();
     let docName = $('#doctor-name').val();
     resultsByDoctorName(docName);
+  });
+
+  $('#homeName').click(function() {
+    showHome();
   });
 
 });
