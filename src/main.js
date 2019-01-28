@@ -81,7 +81,7 @@ function checkAndDisplayResults(doctorsList) {
 
   function displayError(message) {
     const doctorCard = `<div class='doctor-card'>
-    <p><i class="fas fa-exclamation-triangle"></i> There was an error processing your request: ${message}.</p>
+    <p></i> There was an error processing your request: ${message}.</p>
     </div>`;
     $('#results').append(doctorCard);
   }
@@ -122,21 +122,25 @@ $(document).ready(function() {
 
   $('#condition-form').submit(function(event) {
     event.preventDefault();
+    $('.doctor-card').empty();
     let condition = $('#condition').val();
     resultsByCondition(condition);
   });
 
   $('#home').click(function() {
+    $('.doctor-card').empty();
     showHome();
   });
 
   $('#docName-form').submit(function(event) {
     event.preventDefault();
+    $('.doctor-card').empty();
     let docName = $('#doctor-name').val();
     resultsByDoctorName(docName);
   });
 
   $('#homeName').click(function() {
+    $('.doctor-card').empty();
     showHome();
   });
 
