@@ -31,6 +31,8 @@ A JavaScript application that allows a user to view doctors in the Portland area
 * Install Node.js
 * Install karma-cli globally: `npm install -g karma-cli`
 * Go to GitHub profile and clone the repo from [Doctor Lookup](https://github.com/TanviCodeLife/doctor-lookup.git). Use `git clone <project url>` command to pull it to a local repository in your Home directory.
+* Sign up for an API key here: https://developer.betterdoctor.com/
+* Add a .env file at the root level of the project with the following: exports.apiKey=ADD_KEY_HERE where the value is your new api key
 *  Navigate to root of project directory
 * `npm install` to install dependencies
 * `npm run start` to build and start the dev server
